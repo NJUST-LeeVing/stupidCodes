@@ -1,4 +1,4 @@
-#includeiostream
+#include<iostream>
 using namespace std;
 
 int calc(int urinals) {
@@ -7,29 +7,29 @@ int calc(int urinals) {
 	if (urinals == 3) return 2;
 	if (urinals == 4) return 2;
 	if (urinals % 2 != 0) {
-		return 2  calc((urinals + 1)  2) - 1;
+		return 2 * calc((urinals + 1) / 2) - 1;
 	}
 	if (urinals % 2 == 0) {
-		return calc(urinals  2) + calc((urinals  2) + 1) - 1;
+		return calc(urinals / 2) + calc((urinals / 2) + 1) - 1;
 	}
 }
 
 void test() {
 	int urinals = 0;
-	cout  请输入厕所坑位的数量（范围是0~5千万）：;
-	cin  urinals;
-	if (0 = urinals && urinals = 50000000) {
+	cout << "请输入厕所坑位的数量(范围是0~5千万)：";
+	cin >> urinals;
+	if (0 <= urinals && urinals <= 50000000) {
 		int result = calc(urinals);
-		cout  厕所能容纳的人数为：  result  endl;
-		cout  厕所利用率为：  (result  100  urinals)  %  endl;
+		cout << "厕所能容纳的人数为：" << result << endl;
+		cout << "厕所利用率为：" << (result * 100 / urinals) << "%" << endl;
 	}
 	else {
-		cout  非法输入！请重新输入！  endl;
+		cout << "非法输入！请重新输入！" << endl;
 	}
 }
 
 int main() {
 	test();
-	system(pause);
+	system("pause");
 	return 0;
 }
